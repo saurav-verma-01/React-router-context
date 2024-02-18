@@ -3,7 +3,7 @@ import Logo from "./Logo";
 
 const NavBar = () => {
   return (
-    <header className="bg-slate-900  text-slate-100 flex items-center justify-between px-8 text-xl border-b-2 border-amber-300 h-24 absolute w-full top-0 left-0">
+    <header className="bg-slate-900  text-slate-100 flex items-center justify-between px-8 text-xl border-b-2 border-amber-300 h-[15%] z-20 absolute w-full">
       <Logo />
 
       <nav>
@@ -35,8 +35,10 @@ const NavBar = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                `transition-all duration-700 px-4 py-1 border-2 border-transparent  bg-amber-400 text-slate-900 font-medium hover:bg-transparent hover:border-amber-400   hover:text-amber-400 ${
-                  isActive && "bg-transparent border-amber-400 text-amber-400"
+                `transition-all duration-500 px-4 py-1 font-medium hover:bg-transparent hover:border-amber-400 hover:text-amber-400 ${
+                  isActive
+                    ? "text-amber-400 bg-transparent border-2 border-amber-400"
+                    : "text-slate-900 bg-amber-400 border-2 border-transparent"
                 }`
               }
               to="/login"
