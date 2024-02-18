@@ -7,7 +7,7 @@ import NavBar from "./components/NavBar";
 
 const App = () => {
   return (
-    <main>
+    <main className="h-screen  ">
       <BrowserRouter>
         <NavBar />
         <Routes>
