@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 
 const App = () => {
   return (
-    <main className="h-screen ">
+    <main className="h-screen overflow-hidden">
       <BrowserRouter>
         <NavBar />
         <Routes>
