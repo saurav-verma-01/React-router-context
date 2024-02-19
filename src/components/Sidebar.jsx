@@ -2,7 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className="h-full bg-purple-900 text-purple-100 basis-[36rem] shrink-0 pt-28 flex flex-col gap-8">
+    <div className="h-full bg-purple-900 text-purple-100 basis-[44rem] shrink-0 pt-28 flex flex-col gap-8">
       <div className="bg-slate-950  rounded-lg p-2 w-64 flex items-center justify-between mx-auto mt-8">
         <NavLink
           to="/app/cities"
