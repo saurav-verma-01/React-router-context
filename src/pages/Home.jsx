@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <main className="flex items-center justify-center bg-blue-800 text-blue-100 w-full  bg-[url('../../public/bg.jpg')] bg-cover bg-no-repeat bg-center h-full z-10">
+    <main className="flex items-center justify-center bg-blue-800 text-blue-100 w-full  bg-[url('../../bg.jpg')] bg-cover bg-no-repeat bg-center h-full z-10">
       <div className="w-full h-screen absolute bg-gradient-to-br from-stone-900 to-emerald-950 opacity-70 top-0 left-0 -z-0">
         {" "}
       </div>

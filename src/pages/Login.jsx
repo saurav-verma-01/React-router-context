@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("jack@example.com");
@@ -35,9 +36,12 @@ const Login = () => {
           </div>
 
           <div className="flex">
-            <button className="transition-all duration-500 text-fuchsia-950 bg-white text-lg font-medium py-2 px-4 rounded outline-none  w-full  border-2  border-fuchsia-950 hover:text-white hover:border-white hover:bg-fuchsia-950">
+            <Link
+              to="/app"
+              className="transition-all duration-500 text-fuchsia-950 bg-white text-lg font-medium py-2 px-4 rounded outline-none  w-full  border-2  border-fuchsia-950 hover:text-white hover:border-white hover:bg-fuchsia-950 text-center"
+            >
               Login
-            </button>
+            </Link>
           </div>
         </form>
       </div>
