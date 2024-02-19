@@ -6,8 +6,31 @@ import PageNotFound from "./pages/PageNotFound";
 import NavBar from "./components/NavBar";
 import Login from "./pages/Login";
 import AppLayout from "./pages/AppLayout";
+import CityList from "./components/CityList";
+import { useEffect, useState } from "react";
+
+const BASE_URL = "http://localhost:9000/";
 
 const App = () => {
+  const [cities, setCities] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchCities = async () => {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`${BASE_URL}cities`);
+      const data = await res.json();
+      setCities(data);
+    } catch (error) {
+      alert(`Some Problem occured while fetching Cities Data - ${error}`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchCities();
+  }, []);
+
   return (
     <main className="h-screen overflow-hidden">
       <BrowserRouter>
@@ -18,8 +41,14 @@ const App = () => {
           <Route path="pricing" element={<Pricing />} />
           <Route path="login" element={<Login />} />
           <Route path="app" element={<AppLayout />}>
-            <Route index element={<h2>CITIES LAYOUT</h2>} />
-            <Route path="cities" element={<h2>CITIES LAYOUT</h2>} />
+            <Route
+              element={<CityList isLoading={isLoading} cities={cities} />}
+              index
+            />
+            <Route
+              path="cities"
+              element={<CityList isLoading={isLoading} cities={cities} />}
+            />
             <Route path="countries" element={<h2>COUNTRIES LAYOUT</h2>} />
             <Route path="form" element={<h2>Form LAYOUT</h2>} />
           </Route>

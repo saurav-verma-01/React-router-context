@@ -1,0 +1,89 @@
+{
+  "cities": [
+    {
+      "cityName": "Paris",
+      "country": "France",
+      "emoji": "🇫🇷",
+      "date": "2027-10-31T15:59:59.138Z",
+      "notes": "The City of Light!",
+      "position": {
+        "lat": 48.8566,
+        "lng": 2.3522
+      },
+      "id": 73930385
+    },
+    {
+      "cityName": "Tokyo",
+      "country": "Japan",
+      "emoji": "🇯🇵",
+      "date": "2027-10-31T15:59:59.138Z",
+      "notes": "Fascinating blend of tradition and modernity.",
+      "position": {
+        "lat": 35.6895,
+        "lng": 139.6917
+      },
+      "id": 73930386
+    },
+    {
+      "cityName": "Rome",
+      "country": "Italy",
+      "emoji": "🇮🇹",
+      "date": "2027-10-31T15:59:59.138Z",
+      "notes": "Eternal city with rich history and culture.",
+      "position": {
+        "lat": 41.9028,
+        "lng": 12.4964
+      },
+      "id": 73930387
+    },
+    {
+      "cityName": "New York City",
+      "country": "United States",
+      "emoji": "🇺🇸",
+      "date": "2027-10-31T15:59:59.138Z",
+      "notes": "The Big Apple - Never sleeps!",
+      "position": {
+        "lat": 40.7128,
+        "lng": -74.006
+      },
+      "id": 73930388
+    },
+    {
+      "cityName": "Sydney",
+      "country": "Australia",
+      "emoji": "🇦🇺",
+      "date": "2027-10-31T15:59:59.138Z",
+      "notes": "Stunning beaches and iconic landmarks.",
+      "position": {
+        "lat": -33.8688,
+        "lng": 151.2093
+      },
+      "id": 73930389
+    },
+    {
+      "cityName": "Cape Town",
+      "country": "South Africa",
+      "emoji": "🇿🇦",
+      "date": "2027-10-31T15:59:59.138Z",
+      "notes": "Breathtaking scenery and vibrant culture.",
+      "position": {
+        "lat": -33.9249,
+        "lng": 18.4241
+      },
+      "id": 73930390
+    },
+
+    {
+      "cityName": "Jaipur",
+      "country": "India",
+      "emoji": "🇮🇳",
+      "date": "2027-10-31T15:59:59.138Z",
+      "notes": "The Pink City - A historical marvel.",
+      "position": {
+        "lat": 26.9124,
+        "lng": 75.7873
+      },
+      "id": 73930392
+    }
+  ]
+}
