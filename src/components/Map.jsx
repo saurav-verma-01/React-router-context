@@ -1,12 +1,17 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Map = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
 
+  const navigate = useNavigate();
+
   return (
-    <div className="h-full bg-orange-500 basis-full shrink pt-28">
+    <div
+      className="h-full bg-orange-500 basis-full shrink pt-28"
+      onClick={() => navigate("form")}
+    >
       <h1>MAP </h1>
       <h2 className="text-2xl">
         Position: {lat}, {lng}
