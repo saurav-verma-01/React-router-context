@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
@@ -6,20 +8,25 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 const CityItem = ({ city }) => {
-  const { cityName, emoji, date } = city;
-  console.log(cityName, emoji, date);
+  const { cityName, emoji, date, id } = city;
+  console.log(cityName, emoji, date, id);
   return (
-    <div className="bg-slate-800 flex py-2 px-4 rounded-md gap-8">
-      <div className="flex items-center gap-4">
-        <span className="text-sm">{emoji}</span>
-        <h3 className="text-yellow-400 text-lg">{cityName}</h3>
-      </div>
-      <div className="flex items-center gap-4">
-        <time className="text-sm">{formatDate(date)}</time>
-        <button className=" hover:bg-red-800 p-4 rounded-full w-6 h-6 flex items-center justify-center">
-          ✕
-        </button>
-      </div>
+    <div>
+      <Link
+        className="bg-slate-800 flex py-2 px-4 rounded-md gap-8"
+        to={`${id}`}
+      >
+        <div className="flex items-center gap-4">
+          <span className="text-sm">{emoji}</span>
+          <h3 className="text-yellow-400 text-lg">{cityName}</h3>
+        </div>
+        <div className="flex items-center gap-4">
+          <time className="text-sm">{formatDate(date)}</time>
+          <button className=" hover:bg-red-800 p-4 rounded-full w-6 h-6 flex items-center justify-center">
+            ✕
+          </button>
+        </div>
+      </Link>
     </div>
   );
 };
