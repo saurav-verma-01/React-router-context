@@ -8,13 +8,14 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 const CityItem = ({ city }) => {
-  const { cityName, emoji, date, id } = city;
-  console.log(cityName, emoji, date, id);
+  const { cityName, emoji, date, id, position } = city;
+
+  const queryString = `${id}?lat=${position.lat}&lng=${position.lng}`;
   return (
     <div>
       <Link
         className="bg-slate-800 flex py-2 px-4 rounded-md gap-8"
-        to={`${id}`}
+        to={`${queryString}`}
       >
         <div className="flex items-center gap-4">
           <span className="text-sm">{emoji}</span>
