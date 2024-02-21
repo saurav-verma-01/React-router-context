@@ -1,20 +1,19 @@
 import { Link } from "react-router-dom";
-
-const formatDate = (date) =>
-  new Intl.DateTimeFormat("en", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).format(new Date(date));
+import formatDate from "../constants/formatDate";
+import { useCities } from "../context/CitiesContext";
 
 const CityItem = ({ city }) => {
   const { cityName, emoji, date, id, position } = city;
 
   const queryString = `${id}?lat=${position.lat}&lng=${position.lng}`;
+
+  const { currentCity } = useCities();
   return (
     <div>
       <Link
-        className="bg-slate-800 flex py-2 px-4 rounded-md gap-8"
+        className={`bg-slate-800 flex py-2 border-2 border-transparent px-4 rounded-md gap-8 ${
+          currentCity.id === city.id && "border-green-600"
+        }`}
         to={`${queryString}`}
       >
         <div className="flex items-center gap-4">

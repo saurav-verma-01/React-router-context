@@ -14,7 +14,7 @@ import { CitiesProvider } from "./context/CitiesContext";
 
 const App = () => {
   return (
-    <main className="h-screen overflow-hidden">
+    <main className="h-screen overflow-hidden ">
       <CitiesProvider>
         <BrowserRouter>
           <NavBar />
