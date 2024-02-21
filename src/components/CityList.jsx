@@ -1,7 +1,9 @@
+import { useCities } from "../context/CitiesContext";
 import CityItem from "./CityItem";
 import Spinner from "./Spinner";
 
-const CityList = ({ cities, isLoading }) => {
+const CityList = () => {
+  const { cities, isLoading } = useCities();
   return (
     <div className="h-full p-4 flex gap-4 flex-wrap content-center items-center justify-center">
       {isLoading ? (
