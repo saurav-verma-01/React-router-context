@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useURLPosition } from "../hooks/useURLposition";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -10,6 +11,8 @@ export function convertToEmoji(countryCode) {
 }
 
 const Form = () => {
+  const [mapLat, mapLng] = useURLPosition();
+  console.log(mapLat, mapLng);
   const [cityName, setCityName] = useState("");
   const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
