@@ -37,7 +37,7 @@ const City = () => {
             <h4 className="font-medium text-sm underline underline-offset-2">
               YOU WENT TO {cityName} ON
             </h4>
-            <date className="text-xl">{formatDate(date)}</date>
+            <date className="text-xl">{date && formatDate(date)}</date>
           </div>
           <div className="flex justify-between gap-8 items-center">
             {" "}
