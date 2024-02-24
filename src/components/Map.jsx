@@ -7,7 +7,7 @@ import {
   useMap,
   useMapEvent,
 } from "react-leaflet";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useCities } from "../context/CitiesContext";
 import { useGeolocation } from "../hooks/useGeoLocation";
 import { useURLPosition } from "../hooks/useURLposition";
@@ -84,7 +84,7 @@ const DetectClick = () => {
   const navigate = useNavigate();
   useMapEvent({
     click: (e) => {
-      // console.log(e);
+      console.log(e);
       navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
     },
   });

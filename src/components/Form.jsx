@@ -2,6 +2,13 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useURLPosition } from "../hooks/useURLposition";
 import Spinner from "./Spinner";
+
+// import ReactDatePicker from "react-datepicker";
+
+import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useCities } from "../context/CitiesContext";
+
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
     .toUpperCase()
@@ -13,6 +20,7 @@ export function convertToEmoji(countryCode) {
 const BASE_URL = `https://api.bigdatacloud.net/data/reverse-geocode-client`;
 
 const Form = () => {
+  const { createCity } = useCities();
   const [mapLat, mapLng] = useURLPosition();
   console.log(mapLat, mapLng);
   const [cityName, setCityName] = useState("");
@@ -28,6 +36,7 @@ const Form = () => {
 
   console.log(cityName, country, emoji);
   useEffect(() => {
+    if (!mapLat && !mapLng) return;
     const fetchCityData = async () => {
       try {
         setIsLoadingGeoCoding(true);
@@ -54,6 +63,24 @@ const Form = () => {
     fetchCityData();
   }, [mapLat, mapLng]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!cityName || !date) return;
+
+    const newCity = {
+      cityName,
+      country,
+      emoji,
+      date,
+      notes,
+      position: { mapLat, mapLng },
+    };
+
+    console.log(newCity);
+    createCity(newCity);
+  };
+
   if (isLoadingGeoCoding)
     return (
       <div className="bg-blue-900 rounded-lg py-8 px-4 text-center w-4/5 mx-auto text-2xl">
@@ -68,8 +95,19 @@ const Form = () => {
       </p>
     );
 
+  if (!mapLat && !mapLng)
+    return (
+      <div className="bg-blue-900 rounded-lg p-4 w-4/5 mx-auto">
+        <p className="text-center text-2xl">
+          Start by Clicking somewhere on the Map.
+        </p>
+      </div>
+    );
   return (
-    <form className="bg-blue-900 rounded-lg p-4 w-4/5 mx-auto flex flex-col gap-8">
+    <form
+      className="bg-blue-900 rounded-lg p-4 w-4/5 mx-auto flex flex-col gap-8"
+      onSubmit={handleSubmit}
+    >
       <div className="flex flex-col gap-2 relative">
         <label htmlFor="cityName">City name</label>
         <input
@@ -86,11 +124,18 @@ const Form = () => {
 
       <div className="flex flex-col gap-2 relative">
         <label htmlFor="date">When did you go to {cityName}?</label>
-        <input
+        {/* <input
           className="p-2 rounded text-slate-800 font-bold text-xl"
           id="date"
           onChange={(e) => setDate(e.target.value)}
           value={date}
+        /> */}
+        <ReactDatePicker
+          onChange={(date) => setDate(date)}
+          selected={date}
+          dateFormat="dd/MM/yyyy"
+          className="p-2 rounded text-slate-800 font-bold text-xl"
+          id="date"
         />
       </div>
 

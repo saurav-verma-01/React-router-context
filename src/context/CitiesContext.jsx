@@ -22,6 +22,25 @@ const CitiesProvider = ({ children }) => {
     }
   };
 
+  const createCity = async (newCity) => {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`${BASE_URL}cities`, {
+        method: "POST",
+        body: JSON.stringify(newCity),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      setCities((cities) => [...cities, data]);
+    } catch (error) {
+      alert(`Some Problem occured while fetching Current City Data - ${error}`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const fetchCities = async () => {
     try {
       setIsLoading(true);
@@ -34,6 +53,7 @@ const CitiesProvider = ({ children }) => {
       setIsLoading(false);
     }
   };
+
   useEffect(() => {
     fetchCities();
   }, []);
@@ -45,6 +65,7 @@ const CitiesProvider = ({ children }) => {
         isLoading,
         getCity,
         currentCity,
+        createCity,
       }}
     >
       {children}
