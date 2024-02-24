@@ -13,8 +13,8 @@ import { useGeolocation } from "../hooks/useGeoLocation";
 import { useURLPosition } from "../hooks/useURLposition";
 
 const Map = () => {
-  const [mapPos, setMapPos] = useState([27.5, 77.5]);
   const { cities } = useCities();
+  const [mapPos, setMapPos] = useState([27.5, 77.5]);
 
   const {
     isLoading: isLoadingGeoLocation,
@@ -23,6 +23,7 @@ const Map = () => {
   } = useGeolocation();
 
   const [mapLat, mapLng] = useURLPosition();
+  // console.log(geolocationPostion);
 
   useEffect(() => {
     if (mapLat && mapLng) setMapPos([mapLat, mapLng]);
@@ -35,7 +36,7 @@ const Map = () => {
 
   return (
     <>
-      {geolocationPostion.lat !== mapPos[0] && (
+      {geolocationPostion?.lat !== mapPos[0] && (
         <button
           onClick={getPosition}
           className="absolute bg-green-600 text-gray-50 p-2 rounded h-max w-max bottom-16 left-[75%] translate-x-[-50%] z-30 hover:bg-green-400 cursor-pointer "
@@ -83,7 +84,7 @@ const DetectClick = () => {
   const navigate = useNavigate();
   useMapEvent({
     click: (e) => {
-      console.log(e);
+      // console.log(e);
       navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
     },
   });
